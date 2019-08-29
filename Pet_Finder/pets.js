@@ -1,7 +1,8 @@
 var express=require("express");
 var router=express.Router();
 
-router.get("/pet",function(req,res){
+router.get("/",function(req,res){
+    res.send("this is pets page");
           
 });
-module.export=router;
+module.exports=router;

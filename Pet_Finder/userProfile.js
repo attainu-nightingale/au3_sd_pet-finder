@@ -1,7 +1,8 @@
 var express=require("express");
 var router=express.Router();
 
-router.get("/userProfile",function(req,res){
+router.get("/",function(req,res){
+    res.send("user profile page");
           
 });
-module.export=router;
+module.exports=router;

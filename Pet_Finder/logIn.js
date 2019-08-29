@@ -1,7 +1,8 @@
 var express=require("express");
 var router=express.Router();
 
-router.get("/logIn",function(req,res){
+router.get("/",function(req,res){
+    res.send("login route");
           
 });
-module.export=router;
+module.exports=router;
