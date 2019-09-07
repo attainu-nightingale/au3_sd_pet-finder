@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/modelform.css" />
+</head>
+
+<body>
+
+    <form action="/pets/" method="POST" onsubmit="return Validate(this)" style="border:1px solid #ccc" id="pets"
+        enctype="multipart/form-data">
+        <div class="form-container">
+            <h1>Donate Pet</h1>
+            <p>Please fill in this form to add the pet for donation.</p>
+            <span class="text-muted text-danger"> * required field</span>
+            <hr>
+            <label for="name"><b>Petname</b> <span class="text-muted text-danger"> *</span></label>
+            <input type="text" class="petText" placeholder="Enter petname" value="{{petinfo.name}}" id="name" name="name" required>
+
+
+
+            <label for="age"><b>Petage</b></label>
+            <input type="text" placeholder="Petage" id="age" value="{{petinfo.petage}}" name="age">
+            <div class="row">
+                <div class="col-4 col-md-4 col-sm-4 cl-lg-4 col-xl-4">
+                    <div class="row">
+                        <div class="col">
+                            <label><b>Vaccinated</b></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="vaccinated" id="vaccinated"
+                                    value="1">
+                                <label class="form-check-label" for="vaccinated"><b>Yes</b></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="vaccinated" id="vaccinated"
+                                    value="0">
+                                <label class="form-check-label" for="vaccinated"><b>No</b></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-4 col-sm-4 cl-lg-4 col-xl-4">
+                    <div class="row">
+                        <div class="col">
+                            <label><b>Trained</b></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="trained" id="trained" value="1">
+                                <label class="form-check-label" for="trained"><b>Yes</b></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="trained" id="trained" value="0">
+                                <label class="form-check-label" for="trained"><b>No</b></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-4 col-sm-4 cl-lg-4 col-xl-4">
+                    <div class="row">
+                        <div class="col">
+                            <label><b>Category</b><span class="text-muted text-danger"> *</span></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="category" id="category" value="cat"
+                                    required>
+                                <label class="form-check-label" for="category"><b>Cat</b></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="category" id="category" value="dog"
+                                    required>
+                                <label class="form-check-label" for="category"><b>Dog</b></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <br>
+            <label for="breeds"><b>Breeds</b><span class="text-muted text-danger"> *</span></label>
+            <input type="text" class="petText" placeholder="Enter petbreed" value="{{petinfo.breeds}} " id="breeds" name="breeds" required>
+
+            <label for="location"><b>Location</b><span class="text-muted text-danger"> *</span></label>
+            <input type="text" class="petText" placeholder="Enter Location" value="{{petinfo.location}}" id="location" name="location"
+                onFocus="geolocate()" required>
+
+            <label for="color"><b>Color</b></label>
+            <input type="text" class="petText" placeholder="Enter Color"  value="{{petinfo.color}}" id="color" name="color">
+
+            <label for="email"><b>Email</b><span class="text-muted text-danger"> *</span></label>
+            <input type="Email" placeholder="Enter email" id="email" name="email" required>
+
+            <label for="phone"><b>Phone</b><span class="text-muted text-danger"> *</span></label>
+            <input type="tel" placeholder="Enter phone no" id="phone" name="phone" required>
+
+            <label for="description"><b>Description</b></label>
+            <textarea rows="4" style="width:100%" id="description"  name="description"
+                placeholder="Write something interesting about your pet..">{{petinfo.description}}</textarea>
+
+             {{#if petinfo}}
+             {{else}}
+            <label for="File"><b>Select Image</b><span class="text-muted"> *</span></label>
+            <input type="file" value="Browse" id="File" name="File" required>
+            {{/if}}
+
+
+            <div class="clearfix">
+                <button {{#if petinfo}}type="button" id="updatePetData" pet_id={{petinfo.id}} {{else}}type="submit"{{/if}}  class="signupbtn">Add</button> 
+                <button type="button" class="cancelbtn">Cancel</button>
+            </div>
+        </div>
+    </form>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_G0CHEcVYkoiKehQAvnlx55Nh_7B6XLw&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+    <script src="/map-api-v0.js"></script>
+    <script src="/filetype-api-v0.js"></script>
+    <script src="/breeds-api-v0.js"></script>
+     <script src="/updatepet-api-v0.js"></script>
+
+</body>
+
+</html>
