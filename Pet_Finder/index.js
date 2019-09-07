@@ -1,5 +1,28 @@
 var express=require("express");
 var app=express();
+var mongoClient=require('mongodb').MongoClient
+var hbs = require('hbs')
+
+var url = 'mongodb+srv://abhay:abhay123@au3-projects-cluster-lcsfk.mongodb.net/?retryWrites=true&w=majority'
+
+mongoClient.connect(url, { useNewUrlParser: true }, function (error, client) {
+    if(error) throw error;
+    app.locals.db = client.db('petFinder');
+})
+
+hbs.registerHelper('isActive', function(parameter, string, options){
+    if(parameter == string){
+        return options.fn(this)
+    }
+    else
+      return options.inverse(this)
+} )
+
+
+app.set('view engine', 'hbs');
+app.use(express.static('public'));
+app.use(express.urlencoded());
+
 //default route //
 app.use("/",require("./home"));
 //signUp route this route will inclued signup form  which will create new user account//

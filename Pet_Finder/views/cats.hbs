@@ -1,0 +1,53 @@
+
+    <div class="container mt-5">
+        <h1 class="display-3">Search Cat by Breed</h1>
+        <form action="/cats" method="GET">
+            <div class="form-group">
+                <select name="breed" id="breed_select" class="custom-select breed">
+                    <option></option>
+                </select>
+            </div>
+            <button class="btn btn-outline-dark hvr-grow" id="search">Search</button>
+        </form>
+    </div>
+    <div class="container result">
+        <div class="row mt-5">
+            <div class="col-md-7">
+                <div class="jumbotron">
+                    <p class="lead">Select a cat breed to get info.</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div id="catImg"></div>
+            </div>
+        </div> 
+    </div>
+
+
+{{!-- MongoDB Search Results --}}
+<div class="container">
+    <div class="row mt-5">
+        {{#each pets}}
+            <div class="col-md-4">
+                <div class="card mr-2 mt-2 mb-2">
+                    <img src="{{this.petImg}}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text">Age: {{this.age}}</p>
+                        <p class="card-text">Breed: {{this.breed}}</p>
+                        <p class="card-text">Description: {{this.desc}}</p>
+                        <p class="card-text">Animal: {{this.categ}}</p>
+                        <a href="#" class="btn btn-primary">More Info</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+    </div>
+</div>
+
+
+
+
+
+
+{{!-- MongoDB Search Results End--}}

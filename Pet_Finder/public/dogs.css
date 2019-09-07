@@ -1,0 +1,19 @@
+
+* {
+    color: #4D4751;
+    font-family: 'Raleway', helvetica, sans-serif;
+}
+.img-resize {
+    height: 442px;
+    width: 445px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+.jumbotron {
+    background-color: transparent;
+}
+.result {
+    border-radius: .2rem;
+    box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ebedee;
+}
