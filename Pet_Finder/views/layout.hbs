@@ -1,0 +1,74 @@
+    <!DOCTYPE html>
+    <head>
+       <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{{title}}</title>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway&display=swap"/>
+        <link rel="stylesheet" href="layout.css"/>
+        <link rel="stylesheet" href='./{{style}}'/>
+    </head>
+    <body>
+        {{!-- nav --}}
+    
+    <nav class="navbar navbar-expand-lg navbar-expand-sm fixed-top">
+      <a class="navbar-brand" href="/">Pet Finder</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav ml-auto">
+      <li class="nav-items mr-1">
+        <a class="nav-link {{#isActive title 'Dogs'}} active {{/isActive}}" href="">Dogs</a>
+      </li>
+      <li class="nav-item mr-1">
+        <a class="nav-link {{#isActive title 'Cats'}} active {{/isActive}}" href="">Cats</a>
+      </li>
+      <li class="nav-item mr-1">
+        <a class="nav-link  {{#isActive title 'User Profile'}} active {{/isActive}}" href="">User Profile</a>
+      </li>
+      <li class="nav-item dropdown mr-1">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Breeds
+        </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" id="dogBreed"href="">Dog Breeds</a>
+        <a class="dropdown-item" id="catBreed" href="">Cat Breeds</a>
+      </div>
+      </li>
+      <li class="nav-item">
+        <button type="button" id="addPet" class="btn btn-outline-light hvr-grow"  href="">Add Pets</button>
+      </li>
+      <li class="nav-item">
+        <a href="/login" id="login" class="btn btn-outline-light hvr-grow">Login </a>
+      </li>
+      {{!-- <li class="nav-item">
+        <a href="/login/logout" id="logout" class="btn btn-outline-light hvr-grow">Logout </a>
+      </li> --}}
+    
+      <li class="nav-item">
+        <button type="button" id="signup" class="btn btn-outline-light hvr-grow"  href="/signup">Signup</button>
+      </li>
+      </ul>
+      </div>
+    </nav>
+  
+  
+    {{{body}}}
+     
+     <footer> &copy; PetFinder 2019</footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src='./{{script}}'></script>
+  </body>
+  </html>
