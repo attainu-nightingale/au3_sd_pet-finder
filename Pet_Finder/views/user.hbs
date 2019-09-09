@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container-fluid" id="wrapper-container">
+        <nav class="navbar navbar-expand-lg navbar-expand-sm navbar-light bg-light fixed-top">
+            <a class="navbar-brand" href="#">Mohd Sadab</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Profile<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Donatedpets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">Likedpets</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <div id="currentSection"></div>
+
+        <div class="container-fluid  mb-5 ">
+            {{!-- top image  --}}
+            <div class="row mb-5">
+                <div class="col-12 col-lg-12 col-xl-12 col-sm-12 col-md-12">
+                    <div class="jumbotron-fluid">
+                        {{#if user.profile_url}}
+                        <div class="prof-image card-img-top" style="background-image:url({{user.profile_url}});">
+                            {{else}}
+                            <div class="prof-image card-img-top" style="background-image:url(
+                    https://res.cloudinary.com/petfinder/image/upload/v1567262961/widpaye4uktudxcnqckq.jpg);">
+                                {{/if}}
+                                <div class="profile-tab text-center">
+                                    <p class="pt-3 name">{{user.firstname}} {{user.lastname}}</p>
+                                    <p><i class="fa fa-envelope mr-1 email"></i>{{user.email}}</p>
+                                    <p><i class="fa fa-phone mr-1 phone"></i> {{user.phone}}</p>
+                                    <p><i class="fa fa-user mr-1 username"></i>{{user.username}}</p>
+                                    <p><a data-toggle="modal" data-target="#exampleModal" href="#" class="text-white"
+                                            data-toggle="tooltip" data-placement="bottom" title="Edit profile">
+                                            <i class="fa fa-pencil text-white"></i> Edit</a></p>
+                                    <p class="mb-5">
+                                        <a data-toggle="modal" data-target="#exampleModalUpload" href="#"
+                                            class="text-white mb-5" data-toggle="tooltip" data-placement="bottom"
+                                            title="Change profile">
+                                            <i class="fa fa-upload mr-1 text-white"></i>Upload</a>
+                                    </p>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row " id="Uploads">
+                    {{!-- <div class="row bg-primary"> --}}
+                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 ">
+                        <div class="row text-center">
+                            <div class="col-12 col-lg-12 col-md-12 col-sm-12 ">
+                                <div class="alert alert-primary py-3 mt-5"
+                                    style="background-color:#231942; color:white; ">
+                                    Uploaded Pets</div>
+                            </div>
+                        </div>
+                    </div>
+                    {{!-- </div> --}}
+                    <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="row">
+                            {{#each petAdded}}
+                            <div class="col-md-4 col-lg-4 col-xl-3 col-sm-6 col-12 mt-3">
+                                <div class="card  petAddedCard">
+                                    <div class="images card-img-top" style="background-image:url(
+                                                {{this.url}});">
+                                        <button class="btn btn-outline-secondary pet-pics" value="{{this._id}}"
+                                            pub_id="{{this.public_id}}" data-toggle="modal"
+                                            data-target="#petsModalUpload"><i class="fa fa-camera"></i></button>
+
+                                             <a href="/userprofile/update/petinfo?name={{this.name}}&breeds={{this.breeds}}&trained={{this.trained}}&vaccinated={{this.vaccinated}}&petage={{this.age}}&color={{this.color}}&location={{this.location}}&description={{this.description}}&id={{this._id}}"
+                                            class="btn btn-secondary ml-3" style="color:#5E548E"><i class="fa fa-pencil"
+                                                style="font:18px; color:white"></i></a>
+
+                                             <a href="#" id={{this._id}} value={{this.public_id}}
+                                            class="btn delete btn-danger ml-3"><i class="fa fa-trash"
+                                                style="font:18px; color:white;"></i></a>   
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{this.name}},{{this.breeds}}</h5>
+
+                                        <p class="card-text">
+                                            {{#if this.trained}}
+                                            Trained
+                                            {{/if}}
+                                            {{#if this.vaccinated}}
+                                            &nbspvaccinated
+                                            {{/if}}
+                                        </p>
+                                        <p class="card-text"><i class="fa fa-address-book-o"
+                                                aria-hidden="true"></i>&nbsp{{this.location}}</p>
+                                        
+                                       
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn hvr-glow likeBtn"><i
+                                                class="fa fa-heart-o"></i></button>
+                                        <a href="/pets/{{this._id}}" class="btn more btn-outline-primary ml-3"><i
+                                                class="fa fa-info px-1"></i></a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="row " id="Liked">
+                        {{!-- <div class="row bg-primary"> --}}
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12 ">
+                            <div class="row text-center">
+                                <div class="col-12 col-lg-12 col-md-12 col-sm-12 ">
+                                    <div class="alert alert-primary py-3 mt-5"
+                                        style="background-color:#231942; color:white; ">Liked Pets</div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- </div> --}}
+                        <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                            <div class="row">
+                                {{!--petAdded replaces with the petLiked --}}
+                                {{#each petAdded}}
+                                <div class="col-md-4 col-lg-4 col-xl-3 col-sm-6 col-12 mt-3">
+                                    <div class="card petLiked">
+                                        <div class="images card-img-top" style="background-image:url(
+                                                {{this.url}});">
+                                            <a href="#" id={{this._id}} value={{this.public_id}}
+                                                class="btn delete btn-danger "><i class="fa fa-trash"
+                                                    style="font:18px; color:white;"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{this.name}},{{this.breeds}}</h5>
+
+                                            <p class="card-text">
+                                                {{#if this.trained}}
+                                                Trained
+                                                {{/if}}
+                                                {{#if this.vaccinated}}
+                                                &nbspvaccinated
+                                                {{/if}}
+                                            </p>
+                                            <p class="card-text"><i class="fa fa-address-book-o"
+                                                    aria-hidden="true"></i>&nbsp{{this.location}}</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn hvr-glow likeBtn"><i
+                                                    class="fa fa-heart"></i></button>
+
+                                            <a href="#" class="btn more btn-outline-primary ml-3">A</a>
+                                            <a href="/pets/{{this._id}}" class="btn more btn-outline-primary ml-3"><i
+                                                    class="fa fa-info p-1" aria-hidden="true"></i></a>
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="mx-auto">
+                    <button class="btn btn-primary text-white mt-5 py-2 ml-2" id="goToTop">Go to top</button>
+                    <button class="btn btn-primary text-white mt-5 py-2 ml-2" id="goToUploads">Go to uploads</button>
+                    <button class="btn btn-primary text-white mt-5 py-2 ml-2" id="goToLiked">Go to liked</button>
+                </div>
+            </div>
+        </div>
+        {{!-- modal form for update user info  --}}
+        <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Update Info</h5>&nbsp
+                        <span class="text-muted text-danger"> * required field</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="userUpdateModalForm">
+                        <form id="userProfile" style="border:1px solid #ccc" enctype="multipart/form-data">
+                            <div class="form-container">
+                                <label for="firstname"><b>Firstname</b> <span class="text-muted text-danger">
+                                        *</span></label>
+                                <input type="text" class="updateUserInfo" placeholder="Enter first name..."
+                                    id="firstname" name="firstname" value={{user.firstname}} required>
+
+                                <label for="lastname"><b>Lastname</b><span class="text-muted text-danger">
+                                        *</span></label>
+                                <input type="text" class="updateUserInfo" value={{user.lastname}}
+                                    placeholder="Enter lastname..." id="lastname" name="lastname" required>
+
+                                <label for="phone"><b>Phone</b><span class="text-muted text-danger">
+                                        *</span></label>
+                                <input type="tel" placeholder="Enter phone no" id="phone" value={{user.phone}}
+                                    name="phone" required>
+
+                                <label for="email"><b>Email</b><span class="text-muted text-danger">
+                                        *</span></label>
+                                <input type="email" class="updateUserInfo" value={{user.email}}
+                                    placeholder="Enter email.." id="email" name="username" required>
+
+
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="updateInfo">Update</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{!-- profile changing modal form --}}
+        <div class="modal" id="exampleModalUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Change profile pic</h5>&nbsp
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="/userprofile/pic/update" id="profile-upload"
+                            style="border:1px solid #ccc" enctype="multipart/form-data">
+                            <div class="form-container">
+                                <label for="firstname"><b>Choose Profile</b> <span class="text-muted text-danger">
+                                        *</span></label>
+                                <input type="file" class="updateUserInfo" placeholder="Enter first name..."
+                                    id="firstname" name="profile_url" required>
+                                <input type="text" name="public_id" class="d-none" value={{user.public_id}}>
+                                <button type="submit" class="btn btn-primary btn-block py-3"
+                                    id="updateInfo">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {{!-- pets modal pic update form --}}
+        <div class="modal" id="petsModalUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Change pet pic</h5>&nbsp
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="/userprofile/pets/pic/update" id="pets-images"
+                            style="border:1px solid #ccc" enctype="multipart/form-data">
+                            <div class="form-container">
+                                <label for="firstname"><b>Choose Pet</b> <span class="text-muted text-danger">
+                                        *</span></label>
+                                <input type="file" class="updateUserInfo" placeholder="Enter first name..."
+                                    id="firstname" name="petpic_url" required>
+                                <input type="text" name="public_id" class="d-none" value={{user.public_id}}>
+                                <button type="submit" class="btn btn-primary btn-block py-3"
+                                    id="updateInfo">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        {{!-- cdn links --}}
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/dbf17313af.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet'>
+
+        {{!-- External css files --}}
+        <link rel="stylesheet" href="/modelform.css" />
+        <script src='/crud-api-v0.js'></script>
+        <script src='/updatepet-api-v0.js'></script>
+
+        <script>
+            //  for animation of profile...
+            $(".jumbotron-fluid").hover(function () {
+                $(".profile-tab").slideDown("slow");
+
+            }, function () {
+                $(".profile-tab").slideUp("slow");
+            })
+
+            // for taking user to the top of the page;
+            $(document).ready(function () {
+                $("#goToTop").click(function () {
+                    $('html, body').animate({
+                        scrollTop: $("#wrapper-container").offset().top
+                    }, 1500);
+                });
+
+                $("#goToUploads").click(function () {
+                    $('html, body').animate({
+                        scrollTop: $("#Uploads").offset().top
+                    }, 1500);
+                });
+
+                //showing the current section of the user
+                $(window).scroll(function () {
+
+                    var liked = $('#Liked').offset().top - window.scrollY;
+                    var upload = $('#Uploads').offset().top - window.scrollY;
+                    if (liked < 0) {
+                        $("#currentSection").attr("class", "alert mt-5 fixed-top text-center alert-info").html("Liked Pets");
+                    }
+                    if (liked > 0 && upload <= 0) {
+                        $("#currentSection").attr("class", "alert mt-5 fixed-top text-center alert-info").html("Uploaded Pets");
+                    }
+                    if (liked > 0 && upload > 0) {
+                        $("#currentSection").attr("class", "").html();
+                    }
+
+                });
+                $("#wrapper-container").scroll(function () {
+                    console.log("val", (x += 1));
+                });
+
+
+                $("#goToLiked").click(function () {
+                    $('html, body').animate({
+                        scrollTop: $("#Liked").offset().top
+                    }, 1500);
+                });
+            });   
+        </script>
+
+</body>
+
+</html>
