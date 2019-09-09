@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{title}}</title>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="layout.css"/>
+<style>
+  *{
+    box-sizing: border-box
+   
+  }
+  body{
+    margin: 0%;
+    padding: 0%;
+     overflow-x: hidden;
+    overflow-y: scroll;
+    background-image: linear-gradient( 
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)
+    ),
+    
+     url("https://images.unsplash.com/photo-1509205477838-a534e43a849f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1398&q=80");
+      height: 120%;
+        background-attachment: fixed;
+   background-position: 50% 40%;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: relative;
+  }
+  form{
+   position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    height: 75%;
+    width:40%;
+    padding: 2%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 10px
+  }
+  #btn{
+    background-color: #231942;
+    color: white;
+    cursor: pointer
+  }
+   sup{
+    color: red
+  }
+   p{
+    text-align: center
+  }
+  .error_form{
+    color: white
+  }
+  #login-link{
+    position: relative;
+    top:90%;
+    color: snow
+  }
+</style>
+</head>
+<body>
+
+<form  action="/signup" method="POST">
+  <p style="font-size:25px; text-align:center">Sign Up</p>
+  <hr/>
+   <div class="form-group">
+    <label for="firstname">Firstname <sup>*</sup></label>
+    <input type="text" class="form-control" name="firstname" id="firstname"  placeholder="Firstname" required>
+    <span class="error_form" id="fname_error_message"></span>
+  </div>
+   <div class="form-group">
+    <label for="lastname">Lastname <sup>*</sup></label>
+    <input type="text" class="form-control" name="lastname" id="lastname"  placeholder="lastname" required>
+    <span class="error_form" id="lname_error_message"></span>
+  </div>
+   <div class="form-group">
+    <label for="email">Email <sup>*</sup></label>
+    <input type="email" class="form-control" name="email" id="email"  placeholder="Email" required>
+    <span class="error_form" id="email_error_message"></span>
+  </div>
+  <div class="form-group">
+    <label for="username">Username <sup>*</sup></label>
+    <input type="text" class="form-control" name="username" id="username"  placeholder="Username"required>
+    <span class="error_form" id="uname_error_message"></span>
+  </div>
+  <div class="form-group">
+    <label for="password">Password <sup>*</sup></label>
+    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+    <span class="error_form" id="password_error_message"></span>
+  </div>
+ 
+  <button type="submit" id="btn" class="form-control">Submit</button>
+</form>
+
+<p id="login-link">Already have an account? <a style="color:white; text-decoration:underline" id="signupLink" href="/login">Login</a> here</p>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+   crossorigin="anonymous"></script>
+<script src="{{script}}"></script>
