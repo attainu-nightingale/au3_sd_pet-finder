@@ -1,3 +1,4 @@
+
 var assert=require('assert');
 var express = require('express');
 var session = require('express-session')
@@ -36,6 +37,7 @@ app.set("view engine","hbs");
 app.use(express.static("public"));
 
 
+
 app.locals.md5 = md5;
 
 hbs.registerHelper('isActive', function(parameter, string, options){
@@ -60,12 +62,20 @@ app.use("/login",require('./login'));
 
 // userProfile route will display all the user info. here user can add,delete and update pet info//
  app.use("/userprofile",require("./userProfile.js"));
+app.use("/",require("./home"));
+// //signUp route this route will inclued signup form  which will create new user account//
+ app.use("/signup",require("./signup"));
+// //login route will check login credentials of user and will redirect them to userProfile route//
+app.use("/login",require("./login"));
+// //userProfile route will display all the user info. here user can add,delete and update pet info//
+ app.use("/userprofile",require("./userProfile"));
 // //pets route will display all the pets available in db regardless of category(i.both cats and dogs )//
  app.use("/pets",require("./pets"));
 // //seperate route only for dogs //
  app.use("/dogs",require("./dogs"));
 // //seperate route only for cats //
  app.use("/cats",require("./cats"));
+
 
  //seprate routes for all dogs 
  app.use("/alldogs",require("./alldogs"));
@@ -81,7 +91,7 @@ app.use("/login",require('./login'));
 
  //success stories adopted routes..
  app.use("/adopted",require('./adopted'));
-
- 
-app.listen(8080);
+app.listen(8000,function(){
+    console.log("port no:",8000);
+});
 
