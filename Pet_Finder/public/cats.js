@@ -21,7 +21,7 @@ $.ajax({
                 dataType: 'json',
                 headers: { 'x-api-key': 'a9e89407-c340-4890-844e-7076d26bb0b1' },
                 success: function (result) {
-                    $('#catImg').append('<img src="' + result[0].url + '" class="img-responsive img-resize">')
+                    $('#catImg').append('<img src="' + result[0].url + '" class="img-fluid">')
                 }
             })
 

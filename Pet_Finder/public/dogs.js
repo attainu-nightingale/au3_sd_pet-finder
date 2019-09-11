@@ -21,7 +21,7 @@ $.ajax({
                     if (result.length == 0) {
                         $('#dogImg').append('<p>Sorry no image available for this breed yet</p>')
                     } else {
-                        $('#dogImg').append('<img src="' + result[0].url + '" class="img-responsive img-resize">')
+                        $('#dogImg').append('<img src="' + result[0].url + '" class="img-fluid">')
                     }
                 }
             })

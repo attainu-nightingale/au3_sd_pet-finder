@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row my-5">
+        <div class="col-md-6 pl-5">
+            <h1 class="display-4">Success Stories</h1>
+            <div style="transform-origin:center 1.5px;top:;bottom:;left:50px;right:;width:150px;height:5px;position:absolute;"
+                class="style-jzcc3cwz"></div>
+        </div>
+    </div>
+</div>
+​
+<div class="row mt-4 ml-3 mr-3 mb-5">
+    {{#each pets}}
+    <div class="col-md-4 mb-5">
+        <div class="card">
+            <img src="{{this.url}}" id="cardImg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{this.name}}</h5>
+                <p class="card-text">Age: {{this.age}}</p>
+                <p class="card-text">Breed: {{this.breeds}}</p>
+            </div>
+            <div class="card-footer">
+​
+                <a href="/petprofile/{{this._id}}" class="info">
+                    <i class="fa fa-info-circle info" style="font-size:20px;color:blue;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
