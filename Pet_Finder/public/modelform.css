@@ -1,0 +1,260 @@
+body {
+    font-family: 'Nexa Regular', arial, helvetica, sans-serif;
+    overflow-x:hidden;
+}
+
+* {
+    box-sizing: border-box
+}
+
+form#userProfile{
+    margin-top:52px;
+    margin: auto;
+    width: 100%;
+    background-color:  #231942;
+    color:#FFFFFF;
+}
+form#profile-upload{
+    margin: auto;
+    width: 100%;
+    background-color:  #231942;
+    color:#FFFFFF;
+}
+form#pets-images{
+    margin: auto;
+    width: 100%;
+    background-color:  #231942;
+    color:#FFFFFF;
+}
+
+form#pets{
+    margin-top:52px!important;
+    margin-bottom:52px!important;
+    margin: auto;
+    width: 60%;
+    background-color:  #231942;
+    color:#FFFFFF;
+}
+
+form#updatepets{
+    margin-top:52px!important;
+    margin-bottom:52px!important;
+    margin: auto;
+    width: 100%;
+    background-color:  #231942;
+    color:#FFFFFF;
+}
+
+/* Full-width input fields */
+input[type=tel],input[type=number],
+input[type=file],input[type=Email]#email,textarea,input.petText,input.updateUserInfo,#age{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #ffffff;
+    color:#5E548E;
+    border-radius: 3px;
+    
+}
+
+input.petText:focus,input.updateUserInfo:focus,
+input[type=tel]:focus,input[type=number]:focus,
+input[type=file]:focus,input[type=Email]#email:focus,textarea:focus,#age:focus {
+    background: #f1f1f1;
+    outline: none;
+}
+
+input[type=file]{
+    color:#231942;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+.modalbutton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+button:hover {
+    opacity: 0.8;
+    border:1px solid #FFFFFF;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+    border-radius: 2px;
+    color:#ffffff;
+   
+}
+
+.signupbtn {
+    padding: 14px 20px;
+    background-color:rgb(55, 74, 158);
+    border-radius: 2px;
+    color:#ffffff;
+}
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn,
+.signupbtn {
+    float: left;
+    width: 50%;
+    border:none;
+}
+
+/* Add padding to container elements */
+.form-container {
+    padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+span.text-muted{
+    color:red !important;
+}
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 576px) {
+
+}
+@media screen and (max-width: 500px) {
+
+    .cancelbtn,
+    .signupbtn {
+        width: 100%;
+    }
+    form#pets{
+        width:95%
+    }
+    button:hover {
+        opacity: 0.8;
+        border:1px solid #FFFFFF;
+    }
+    
+}
+
+@media screen and (max-width: 400px) {
+
+    div img{
+    float:none;  
+    width:100%;
+    height:325px;
+    
+  }
+ div.profile{
+     background-color: #ffffff;
+     width:100%;
+     margin-left:15px;
+     margin-right:15px;
+    
+  }
+
+    
+}
+
+/** table-hover in addpet.hbs  **/
+
+div#autoSuggestionBreeds div{
+    margin:0px;
+    padding:0px;
+    
+}
+div#autoSuggestionBreeds div:hover{
+   
+background-color: grey;
+    
+}
+
+/** displaying images on top of the card    **/
+
+div.prof-image {
+    position: relative;
+    top:56px;
+    float: left;
+    width: 100%;
+    height: 500px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div.images {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 200px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/** stylink on profile links */
+body{
+    background: rgba(35,25,66,0.2) !important;   
+}
+div.profile-tab{
+    display:none;
+    border: 0px !important;
+    background: rgb(35,25,66) !important; /* Fallback color */
+    background: rgba(35,25,66,0.5) !important; /* Black background with 0.5 opacity */
+    color: #f1f1f1 !important; /* Grey text */
+    width: 100% !important; /* Full width */
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    -webkit-transition: display 1s; /* For Safari 3.1 to 6.0 */
+    transition: display 1s;
+
+}
+
+div.petAddedCard div.images button{
+    position: relative;
+    opacity: 1;
+    background-color: rgb(35,25,66);
+}
+div.petAddedCard div.images a,div.petAddedCard div.images button,div.petLiked div.images a{
+    visibility:hidden;
+}
+
+div.petAddedCard:hover div.images a,div.petAddedCard:hover div.images button,div.petLiked:hover div.images a{
+    visibility:visible;
+}
+
+/**css style on user.hbs cards **/
+  .hvr-glow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px red;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
+  }
+  .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
+    box-shadow: 0 0 8px red;
+  }
+  .detailsBtn{
+    background-color: #231942;
+    color: white
+  }
+  .detailsBtn:hover{
+    color: white;
+    border: 1px solid white
+  }
