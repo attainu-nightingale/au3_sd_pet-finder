@@ -9,7 +9,7 @@ router.get("/", function (req, res) {
         if (error) throw error;
         pets = result;
         res.render('dogs.hbs', {
-            title: 'Dog Breed Search',
+            title: 'Dogs',
             pets: pets,
             style: 'dogs.css',
             script: 'dogs.js',
@@ -17,10 +17,6 @@ router.get("/", function (req, res) {
             user: req.session.username,
         })
     })
-
 });
 
-
-
-
-module.exports = router;
+module.exports=router;

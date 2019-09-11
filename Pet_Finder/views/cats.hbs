@@ -26,18 +26,29 @@
 {{!-- MongoDB Search Results --}}
 <div class="row mt-4 ml-3 mr-3 mb-5">
     {{#each pets}}
+<<<<<<< HEAD
+    <div class="col-md-4 col-xl-3 col-lg-3 col-12 col-sm-6 mb-5">
+=======
     <div class="col-md-4 mb-5">
+>>>>>>> 8f565edf4a55bcbfa4eb3c8f0f2f6e502c5f08f5
         <div class="card">
             <img src="{{this.url}}" id="cardImg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{this.name}}</h5>
                 <p class="card-text">Age: {{this.age}}</p>
                 <p class="card-text">Breed: {{this.breeds}}</p>
+<<<<<<< HEAD
+            </div>
+            <div class="card-footer">
+                <a type="button" class="btn btn-sm ml-2 detailsBtn" href="/petprofile/{{this._id}}">Details</a>
+                <a type="button" class="btn btn-sm btn-primary ml-2 adopt" href="/adopt/{{this._id}}">Adopt</a>
+=======
                 <p class="card-text">Animal: {{this.category}}</p>
             </div>
             <div class="card-footer">
                  <a type="button" class="btn btn-sm ml-5 detailsBtn" href="/petprofile/{{this._id}}">Details</a>
                 <a type="button" class="btn btn-sm ml-5 adopt" href="/adopt/{{this._id}}">Adopt</a>
+>>>>>>> 8f565edf4a55bcbfa4eb3c8f0f2f6e502c5f08f5
             </div>
         </div>
     </div>

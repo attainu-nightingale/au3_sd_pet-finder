@@ -4,7 +4,7 @@ var ObjectId = require("mongodb").ObjectId;
 
 router.get('/', function (req, res) {
   var db = req.app.locals.db;
-  db.collection("petsinfo").find({ category: "dog" }).toArray(function (err, result) {
+  db.collection("petsinfo").find({ category: "dog" }).sort({_id:-1}).toArray(function (err, result) {
     if (err) throw err;
     result.forEach(element => {
       element.location=element.location.split(",")[0]; 
@@ -58,4 +58,6 @@ router.use(function (req, res, next) {
     }
 
   });
-module.exports = router;
+
+
+  module.exports = router;

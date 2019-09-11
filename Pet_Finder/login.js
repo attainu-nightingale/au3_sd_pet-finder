@@ -5,6 +5,7 @@ router.get("/",function(req,res){
     res.render("login",{
         layout: false,
         title: 'Login'
+
     });
 });
 router.post('/', function(req,res){
