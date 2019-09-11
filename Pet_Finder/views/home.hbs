@@ -25,7 +25,7 @@ html,body{
 ​
 <div class="row mt-4 ml-3 mr-3 mb-5">
   {{#each pets}}
-  <div class="col-md-4 mb-5">
+  <div class="col-md-4 col-xl-3 col-lg-3 col-sm-6 mb-5">
     <div class="card">
       <img src="{{this.url}}" id="cardImg" class="card-img-top" alt="...">
       <div class="card-body">
@@ -34,11 +34,11 @@ html,body{
         <p class="card-text">Breed: {{this.breeds}}</p>
       </div>
       <div class="card-footer">
-        <button type="submit" class="btn hvr-glow likeBtn"><i class="fa fa-heart"></i></button>
-        <a  href="/petprofile/{{this._id}}" class="btn btn-sm ml-5 detailsBtn">Details</button>
+        <button type="submit" class="btn hvr-glow likeBtn mx-2"><i class="fa fa-heart"></i></button>
+        <a  href="/petprofile/{{this._id}}" class="btn btn-sm mx-2 detailsBtn">Details</button>
          
          
-        <a  class="btn btn-sm ml-5 btn-adopt" value="{{this._id}}" href="#">A</a>
+        <a  class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="{{this._id}}" href="#">Adopt</a>
 ​
       </div>
     </div>
