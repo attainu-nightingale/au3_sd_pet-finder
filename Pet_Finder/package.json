@@ -1,13 +1,25 @@
 {
-  "name": "Pet_Finder",
+  "name": "au3_sd_pet-finder",
   "version": "1.0.0",
+<<<<<<< HEAD
+=======
+  "description": "",
+>>>>>>> 8f565edf4a55bcbfa4eb3c8f0f2f6e502c5f08f5
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/attainu-nightingale/au3_sd_pet-finder.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/attainu-nightingale/au3_sd_pet-finder/issues"
+  },
+  "homepage": "https://github.com/attainu-nightingale/au3_sd_pet-finder#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cloudinary": "^1.15.0",
@@ -23,6 +35,10 @@
     "tinify": "^1.6.0-beta.2",
     "tinypng": "^0.1.1"
   },
+<<<<<<< HEAD
   "devDependencies": {},
   "description": ""
+=======
+  "devDependencies": {}
+>>>>>>> 8f565edf4a55bcbfa4eb3c8f0f2f6e502c5f08f5
 }

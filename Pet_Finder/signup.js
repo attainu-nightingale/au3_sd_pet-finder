@@ -1,6 +1,5 @@
 var express=require("express");
 var router=express.Router();
-
 router.get("/",function(req,res){
     res.render("signup",{
         layout: false,
@@ -11,7 +10,6 @@ router.get("/",function(req,res){
 router.post('/', function(req, res){
   var db = req.app.locals.db;
   var md5 = req.app.locals.md5;
-  
   var newUser = {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -22,7 +20,6 @@ router.post('/', function(req, res){
     petLiked:[],
     requestedPet:[]
   };
-  
   db.collection('userInfo').find({}).toArray(function(error,result){
     var flag = false;
     if(error) throw error
@@ -37,7 +34,6 @@ router.post('/', function(req, res){
       });
       }
     }
-
     if(! flag){
       db.collection('userInfo').insertOne(newUser, function(err, result){
         if (err) throw err;
@@ -46,8 +42,5 @@ router.post('/', function(req, res){
       });
     }
   })
-
- 
 });
-
 module.exports=router; 

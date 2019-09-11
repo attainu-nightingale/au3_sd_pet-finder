@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <link rel="stylesheet" href="/petprofile.css" >
 <div class="container-individual  mb-5">
 
@@ -67,4 +68,75 @@
   </div>
 </div>
 
+=======
+<link rel="stylesheet" href="/petprofile.css" >
+<div class="container-individual  mb-5">
+
+<div class="card mb-3">
+  <div class="inner">
+   <img class="card-img-top" src="{{petprofile.url}}" width="400px" height="500px"/>
+    
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{petprofile.name}}</h5><hr/>
+    <div class="about">
+       <span> <ul>
+
+       <li class="inline">{{petprofile.category}}</li>
+        <li class="inline">{{petprofile.breeds}}</li>
+        <li class="inline">{{petprofile.age}}</li>
+        </ul></span>
+        
+        
+    </div>
+    <hr>
+    <div class="look">
+       <span <ul>
+
+       
+        <li class="inline">{{petprofile.color}}</li>
+        </ul></span>
+        
+
+    </div>
+    <hr>
+    <div class="location">
+      <span <ul>
+
+       <li class="inline">{{petprofile.location}}</li>
+        
+        </ul></span>
+      <hr>
+    </div>
+    <div class="desc">
+      <p>{{petprofile.desc}} </p>
+    </div>
+    
+    <div class="other">
+      
+        <span <ul>
+           Vaccinated:   
+    {{#if petprofile.vaccinated}}
+      <li class="inline">Yes</li>
+      {{else}}
+      <li class="inline">No</li>
+      {{/if}}
+      Trained:
+      {{#if petprofile.trained}}
+       <li class="inline">Yes</li>
+      {{else}}
+      <li class="inline">No</li>
+      
+      {{/if}} 
+        
+        </ul></span>
+        
+    
+    </div>
+    <hr>
+    <button type="button" value="{{petprofile._id}}" class="btn btn-block btn-adopt" >Adopt</button>
+  </div>
+</div>
+
+>>>>>>> 8f565edf4a55bcbfa4eb3c8f0f2f6e502c5f08f5
 </div>
