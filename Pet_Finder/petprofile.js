@@ -9,11 +9,9 @@ router.get("/:id",function(req,res){
     res.render("petprofile",{
         petprofile:result[0],
         title:result[0].name,
-        loggedin:req.session.loggedIn
-​
-    });
+        loggedin:req.session.loggedIn,
+        user:req.session.username
 });
 });
-module.exports=router;
-
-
+});
+module.exports=router
