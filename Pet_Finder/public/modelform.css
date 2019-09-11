@@ -7,8 +7,8 @@ body {
     box-sizing: border-box
 }
 
-
 form#userProfile{
+    margin-top:52px;
     margin: auto;
     width: 100%;
     background-color:  #231942;
@@ -28,6 +28,8 @@ form#pets-images{
 }
 
 form#pets{
+    margin-top:52px!important;
+    margin-bottom:52px!important;
     margin: auto;
     width: 60%;
     background-color:  #231942;
@@ -35,6 +37,8 @@ form#pets{
 }
 
 form#updatepets{
+    margin-top:52px!important;
+    margin-bottom:52px!important;
     margin: auto;
     width: 100%;
     background-color:  #231942;

@@ -359,6 +359,7 @@
                 $(window).scroll(function () {
 
                     var liked = $('#Liked').offset().top - window.scrollY;
+                    console.log(liked)
                     var upload = $('#Uploads').offset().top - window.scrollY;
                     if (liked < 0) {
                         $("#currentSection").attr("class", "alert mt-5 fixed-top text-center alert-info").html("Liked Pets");
