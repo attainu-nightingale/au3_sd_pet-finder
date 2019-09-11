@@ -25,7 +25,14 @@ router.use(express.json({ extended: true }));
 
 var db;
 
-
+router.use(function(req,res,next){
+  if(req.session.loggedIn){
+   next();
+  }
+  else{
+      res.redirect("/login");
+  }
+});
 //adding new petsinfo in the database 
 router.post('/', upload.single('File'), async (req, res) => {
     db=req.app.locals.db;
@@ -51,14 +58,16 @@ router.post('/', upload.single('File'), async (req, res) => {
                     //sending response it have to be changed;
                     req.body.public_id = result.public_id;
                     req.body.url = result.secure_url;
+                    req.body.likes_count=0;
+                    req.body.requestedUser=[];
                    db.collection('petsinfo').insertOne(req.body, (error, addedPetinfo) => {
                        assert.equal(null, error);
                         //adding newAdded petid into user collection inplace of sadabahmad req.session.username  
-                        db.collection('userinfo').updateOne({username:"sadabahmad"},{$push:{petAdded:addedPetinfo.insertedId}},function(error){
+                        db.collection('userinfo').updateOne({username:req.session.username},{$push:{petAdded:addedPetinfo.insertedId}},function(error){
                            assert.equal(null,error);
                         });
                         // inplace of sadabahmad req.session.username 
-                        res.redirect('../userprofile/sadabahmad');
+                        res.redirect(`/userprofile/${req.session.username}`);
                    
                 });
             }
@@ -69,10 +78,22 @@ router.post('/', upload.single('File'), async (req, res) => {
 });
 
 
+//getting add pet routes
+
+router.get("/addpet",(req,res)=>{
+
+    res.render("addpet",{
+        user:req.session.username,
+        loggedin:req.session.loggedIn,
+        temp:true,
+        title:'Add Pets'
+    })
+});
+
 //updating pets info using form ...
 
 router.put('/update/:id',(req,res)=>{
-
+  if(req.session.loggedIn){
     db=req.app.locals.db;
 
     console.log(req.body);
@@ -92,47 +113,65 @@ router.put('/update/:id',(req,res)=>{
         description:req.body.description        
     }},(error,result)=>{
        assert.equal(null,error);
+       
+       db.collection('adoptrequest').updateMany({pet_id:req.params.id},{$set:{
+        pet_name:req.body.name,
+        pet_age:req.body.age,
+        breeds:req.body.breeds,
+        url:req.body.url
+       }})
 
-       //need to change here;
-       //sadabahmad=req.session.username
-       res.json("sadabahmad");
+       res.json(req.session.username);
     });
+  }
+  else{
+   
+    res.json("login");    
+  }
 
 
 });
 
 
 
+router.post('/like/:id/:val', async (req, res) => {
 
-
-// when user click on adopt button this will call and send the mail to the user for notify that some one wants ///to adopt your pet with all pet information 
-router.get("/adopt", function (req, res) {
-
-
-    var fromEmail = new helper.Email('techcode@gmail.com');
-    var toEmail = new helper.Email('sadabkhan14198@gmail.com'); //here we write req.session.email
-    var subject = 'Sending with SendGrid is Fun';
-    var content = new helper.Content('text/plain', 'and easy to do anywhere, even with Node.js');
-    var mail = new helper.Mail(fromEmail, subject, toEmail, content);
-     
-    var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
-    var request = sg.emptyRequest({
-      method: 'POST',
-      path: '/v3/mail/send',
-      body: mail.toJSON()
-    });
-     
-    sg.API(request, function (error, response) {
-      if (error) {
-        console.log('Error response received');
+  if(req.session.loggedIn){
+    var db = req.app.locals.db;
+    console.log(req.params.id);
+  
+    var result = await db.collection("userinfo").findOne({ $and: [{ username: req.session.username }, { petLiked: { $elemMatch: { $eq: ObjectId(req.params.id) } } }] });
+    if (!result) {
+      db.collection("petsinfo").updateOne({ _id: ObjectId(req.params.id) }, { $inc: { likes_count: 1 } }, function (err, result) {
+        if (err) throw err;
+        //console.log(result);
+        db.collection('userinfo').updateOne({ username: req.session.username }, { $push: { petLiked: ObjectId(req.params.id) } }, function (error, result) {
+          res.json({ likes: 1});
+        });
+  
+  
+      });
+    }
+    else {
+  
+      db.collection("petsinfo").updateOne({ _id: ObjectId(req.params.id) }, { $inc: { likes_count: -1 } }, function (err, result) {
+        if (err) throw err;
+        //console.log(result);
+        db.collection('userinfo').updateOne({ username:req.session.username}, { $pull: { petLiked: ObjectId(req.params.id) } }, function (error, result) {
+          res.json({ likes: -1 });
+        });
+      });
+  
       }
-      console.log(response.statusCode);
-      console.log(response.body);
-      console.log(response.headers);
-    });    
-
-    res.send("this is pets page");
-
+    }
+    else{
+   
+      res.json("login");    
+    }
+  
 });
-module.exports = router;
 
+
+
+
+module.exports = router;
