@@ -1,0 +1,50 @@
+  
+  .wrapper-top{
+    margin-top: 30px !important;
+    margin-right: 20px !important;
+    
+  }
+  .card-title{
+    color: #5E548E;
+  font-size: 20px !important;
+  line-height: 22.5px !important;
+  }
+  .likes{
+    color: white
+  }
+    .my-heart{
+      line-height: 2rem;
+    }
+    
+i.my-heart {
+  float: left;
+  
+  position: absolute;
+  left: 10px;
+  bottom:10px;
+}  
+.card-footer{
+  background-color: #231942;
+  height:42px; 
+}
+
+
+.card{
+  transition: box-shadow .3s ;
+  box-shadow: 0 0 15px rgba(33,33,33,.2); 
+}
+.inner{
+    overflow: hidden;
+}
+.inner img{
+    transition: all 1.5s ease;
+}
+.inner:hover img{
+    transform: scale(1.5);
+}
+.inner img {
+
+height: 40vh !important;
+object-fit: cover;
+display: block !important;
+}

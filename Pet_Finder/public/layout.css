@@ -4,10 +4,14 @@
     margin: 0;
     padding: 0;
   }
-body,html{
-    height: 100%;
-    margin: 0;
-  }
+  .navbar-brand{
+    font-family: Yatra One, cursive;
+    font-size:32px;
+} 
+a.active{
+font-size: 17px;
+color:#5E548E;
+}
 nav{
     font-size: 14px;
     font-weight: 400px;
@@ -19,7 +23,7 @@ a{
     color: whitesmoke
     }
 a:hover{
-    color: #5E548E
+    color: #5E548E;
     }
 #addPet, #login{
     margin-right:10px 

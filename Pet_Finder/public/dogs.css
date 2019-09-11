@@ -1,0 +1,69 @@
+
+* {
+    color: #4D4751;
+    font-family: 'Raleway', helvetica, sans-serif;
+}
+.img-resize {
+    max-height: 442px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+.jumbotron {
+    background-color: transparent;
+}
+.result {
+    border-radius: .2rem;
+    box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ebedee;
+}
+.card{
+    position: relative;
+    top: 10%;
+    width:100%
+  }
+  .likeBtn{
+    color:black;
+  }
+  .hvr-glow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px red;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
+  }
+  .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
+    box-shadow: 0 0 8px red;
+  }
+  .detailsBtn{
+    background-color: #231942;
+    color: white
+  }
+  .detailsBtn:hover{
+    color: white;
+    border: 1px solid white
+  }
+
+  @media screen and (max-width:400px){
+    .img-resize{
+      max-width:310px;
+    }
+
+  }
+
+  @media screen and (max-width:500px){
+    .img-resize{
+      max-width:360px;
+    }
+
+  }
+
+  @media screen and (min-width:500px){
+    .img-resize{
+      max-width:445px;
+    }
+
+  }

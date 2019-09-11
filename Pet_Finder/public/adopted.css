@@ -1,0 +1,43 @@
+.style-jzcc3cwz {
+    box-sizing: border-box;
+    border-top: 4px solid #BE95C4;
+}
+.card{
+    position: relative;
+    top: 10%;
+    width:100%;
+    overflow: hidden
+  }
+  .card:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+  #cardImg{
+    width:100%;
+    height:200px;
+  }
+  .likeBtn{
+    color:black;
+  }
+  .hvr-glow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px red;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow;
+    transition-property: box-shadow;
+  }
+  .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
+    box-shadow: 0 0 8px red;
+  }
+  .detailsBtn{
+    background-color: #231942;
+    color: white
+  }
+  .detailsBtn:hover{
+    color: white;
+    border: 1px solid white
+  }

@@ -1,55 +1,63 @@
+<style>
+html,body{
+    height: 100% !important;
+    margin: 0!important;
+    overflow-x:hidden !important;
+  } 
+</style>
+
+
 <div class="hero-image parallax">
   <div class="hero-text w-50">
-  <div class="input-group input-group-md " id="input-group">
-  <input type="text"  class="form-control"  placeholder="Search by location"/>
-  <div class="input-group-append ">
-  <button class="btn btn-info hvr-icon-forward" type="button" id="button-addon2">
-      Search   <i class="fa fa-chevron-circle-right hvr-icon"></i>
-  </button>
- </div>
- </div>
+    <div class="input-group input-group-md " id="input-group">
+      <input type="text" class="form-control" placeholder="Search by location" />
+      <div class="input-group-append ">
+        <button class="btn btn-info hvr-icon-forward" type="button" id="button-addon2">
+          Search <i class="fa fa-chevron-circle-right hvr-icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-   
-<div id="caption"> Most Liked Pets </div>
-  
 
- {{!-- Image Cards  --}}
+
+{{!-- Image Cards  --}}
 
 <div class="row mt-4 ml-3 mr-3 mb-5">
   {{#each pets}}
-  <div class="col-md-4 mb-5">
-  <div class="card">
-  <img src="{{this.petImg}}" id="cardImg" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h5 class="card-title">{{this.name}}</h5>
-  <p class="card-text">Age: {{this.age}}</p>
-  <p class="card-text">Breed: {{this.breed}}</p>
-  <p class="card-text">Description: {{this.desc}}</p>
-  <p class="card-text">Animal: {{this.categ}}</p>
-  </div>
-  <div class="card-footer">
-    <button type="submit" class="btn hvr-glow likeBtn"><i class="fa fa-heart"></i></button>
-    <small class="text-muted ml-5">Last updated 3 mins ago </small>
-    <button type="button" class="btn btn-sm ml-5 detailsBtn">Details</button>
-  </div>
-  </div>
+  <div class="col-md-4 col-xl-3 col-lg-3 col-sm-6 mb-5">
+    <div class="card">
+      <img src="{{this.url}}" id="cardImg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{this.name}}</h5>
+        <p class="card-text">Age: {{this.age}}</p>
+        <p class="card-text">Breed: {{this.breeds}}</p>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn hvr-glow likeBtn mx-2"><i class="fa fa-heart"></i></button>
+        <a  href="/petprofile/{{this._id}}" class="btn btn-sm mx-2 detailsBtn">Details</button>
+         
+         
+        <a  class="btn btn-sm btn-outline-primary mx-2 btn-adopt" value="{{this._id}}" href="#">Adopt</a>
+
+      </div>
+    </div>
   </div>
   {{/each}}
 </div>
 
 <script>
 
-$('#login').on('click', function(){
+  $('#login').on('click', function () {
     window.location.replace('/login');
-})
+  })
 
-$('#signup').on('click', function(){
+  $('#signup').on('click', function () {
     window.location.replace('/signup')
-})
+  })
 
-$('.likeBtn').on('click', function(){
+  $('.likeBtn').on('click', function () {
     $(this).css('color', 'red')
-})
+  })
 
 </script>

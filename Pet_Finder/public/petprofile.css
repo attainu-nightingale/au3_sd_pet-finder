@@ -1,0 +1,55 @@
+body{
+    font-family: 'Raleway', sans-serif ;
+    font-size:16px ;
+    font-weight:400;
+    
+  }
+  .container-individual{
+    
+    margin-top: 52px !important;
+    margin-right: 20px !important;
+    
+    }
+    li.inline{
+      list-style: none;
+      
+      display: inline;   
+      color: #4D4751;
+      padding: 1rem;
+      
+  }
+    .card-title{
+    padding-left: 1rem !important;
+    color: #231942 !important;
+    font-size: 30px !important;
+    
+    }
+
+     
+    
+    p{
+      padding-left: 1rem !important;
+    }
+    .inline{
+      padding-left: 1rem!important;
+    }
+    .card-body{
+      width:auto !important;
+      height:auto;
+        
+        }
+        .other{
+          padding-left: 1rem !important;
+        }
+      .btn-adopt{
+        text-align: center !important;
+        background-color:#231942 !important;
+        border-color:#231942;
+        color:  white;
+        width:100%;
+        padding:1rem;
+      }
+      .card{
+        transition: box-shadow .12s ;
+  box-shadow: 0 0 20px rgba(33,33,33,.2); 
+      }
