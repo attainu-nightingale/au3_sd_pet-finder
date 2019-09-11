@@ -8,8 +8,6 @@ router.get("/",function(req,res){
         script: '/signupPage.js'
     });
 });
-
-
 router.post('/', function(req, res){
   var db = req.app.locals.db;
   var md5 = req.app.locals.md5;

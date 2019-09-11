@@ -9,7 +9,6 @@ router.get("/",function(req,res){
 
     });
 });
-
 router.post('/', function(req,res){
     var db=req.app.locals.db;
     var md5 = req.app.locals.md5;
