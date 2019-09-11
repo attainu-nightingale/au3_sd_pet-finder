@@ -1,3 +1,5 @@
+
+var assert=require('assert');
 var express = require('express');
 var session = require('express-session')
 var mongoClient = require('mongodb').MongoClient;
@@ -8,14 +10,35 @@ var md5 = require('md5');
 var app=express();
 
 app.use(session({
-    secret: 'This is expess-session secret'
+    secret: 'This is expess-session secret',
+    resave:false,
+    saveUninitialized:true
 }));
 
-app.locals.md5 = md5;
+require('dotenv').config();
 
-app.use(bodyParser.urlencoded())
-app.use(express.static('public'));
-app.set('view engine', 'hbs');
+
+var url = process.env.MONGO_URL;
+//assigning the db for global access
+mongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (error, client) {
+    assert.equal(null, error);
+    db = client.db('Petfinder');
+    app.locals.db=db;
+    if(db)
+   console.log("connected ");
+   else
+   console.log("connection failed");
+});
+
+
+
+//default route //
+app.set("view engine","hbs");
+app.use(express.static("public"));
+
+
+
+app.locals.md5 = md5;
 
 hbs.registerHelper('isActive', function(parameter, string, options){
     if(parameter == string){
@@ -24,13 +47,8 @@ hbs.registerHelper('isActive', function(parameter, string, options){
     else
       return options.inverse(this)
 } )
-var url = "mongodb+srv://sravya:sravya97@shallowdiveproject-vspow.mongodb.net/?retryWrites=true&w=majority";
-var db;
-mongoClient.connect(url, {useNewUrlParser: true} ,function(error,client){
-    if(error)
-        throw error;
-    app.locals.db = client.db('PetFinder');
- })
+
+
 
 
 //default route //
@@ -42,13 +60,38 @@ app.use("/signup",require('./signup'));
 //login route will check login credentials of user and will redirect them to userProfile route//
 app.use("/login",require('./login'));
 
-//userProfile route will display all the user info. here user can add,delete and update pet info//
-// app.use("/userprofile",require("./userprofile"));
+// userProfile route will display all the user info. here user can add,delete and update pet info//
+ app.use("/userprofile",require("./userProfile.js"));
+app.use("/",require("./home"));
+// //signUp route this route will inclued signup form  which will create new user account//
+ app.use("/signup",require("./signup"));
+// //login route will check login credentials of user and will redirect them to userProfile route//
+app.use("/login",require("./login"));
+// //userProfile route will display all the user info. here user can add,delete and update pet info//
+ app.use("/userprofile",require("./userProfile"));
 // //pets route will display all the pets available in db regardless of category(i.both cats and dogs )//
-// app.use("/pets",require("./pets"));
+ app.use("/pets",require("./pets"));
 // //seperate route only for dogs //
-// app.use("/dogs",require("./dogs"));
+ app.use("/dogs",require("./dogs"));
 // //seperate route only for cats //
-// app.use("/cats",require("./cats"));
+ app.use("/cats",require("./cats"));
 
-app.listen(8080);
+
+ //seprate routes for all dogs 
+ app.use("/alldogs",require("./alldogs"));
+
+ //seprate routes for all cats 
+ app.use("/allcats",require("./allcats"));
+
+ //individual pets info
+ app.use("/petprofile",require("./petprofile"));
+
+ //pet adopt root....
+ app.use("/adopt",require('./adopt'));
+
+ //success stories adopted routes..
+ app.use("/adopted",require('./adopted'));
+app.listen(8000,function(){
+    console.log("port no:",8000);
+});
+
