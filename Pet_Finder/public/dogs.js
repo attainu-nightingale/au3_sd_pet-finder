@@ -21,11 +21,7 @@ $.ajax({
                     if (result.length == 0) {
                         $('#dogImg').append('<p>Sorry no image available for this breed yet</p>')
                     } else {
-<<<<<<< HEAD
-                        $('#dogImg').append('<img src="' + result[0].url + '" class="img-responsive img-resize">')
-=======
                         $('#dogImg').append('<img src="' + result[0].url + '" class="img-fluid">')
->>>>>>> 8f565edf4a55bcbfa4eb3c8f0f2f6e502c5f08f5
                     }
                 }
             })

@@ -1,10 +1,7 @@
 {
   "name": "au3_sd_pet-finder",
   "version": "1.0.0",
-<<<<<<< HEAD
-=======
   "description": "",
->>>>>>> 8f565edf4a55bcbfa4eb3c8f0f2f6e502c5f08f5
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -35,10 +32,5 @@
     "tinify": "^1.6.0-beta.2",
     "tinypng": "^0.1.1"
   },
-<<<<<<< HEAD
-  "devDependencies": {},
-  "description": ""
-=======
   "devDependencies": {}
->>>>>>> 8f565edf4a55bcbfa4eb3c8f0f2f6e502c5f08f5
 }

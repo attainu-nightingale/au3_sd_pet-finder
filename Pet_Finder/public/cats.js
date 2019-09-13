@@ -21,11 +21,7 @@ $.ajax({
                 dataType: 'json',
                 headers: { 'x-api-key': 'a9e89407-c340-4890-844e-7076d26bb0b1' },
                 success: function (result) {
-<<<<<<< HEAD
-                    $('#catImg').append('<img src="' + result[0].url + '" class="img-responsive img-resize">')
-=======
                     $('#catImg').append('<img src="' + result[0].url + '" class="img-fluid">')
->>>>>>> 8f565edf4a55bcbfa4eb3c8f0f2f6e502c5f08f5
                 }
             })
 
